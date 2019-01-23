@@ -1,0 +1,12 @@
+name: kmaInfo
+title: kmaInfo
+username:
+account: computer
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 660805
+bundleId: 1831461
+url: https://computer.shinyapps.io/kmaInfo/
+when: 1548242017.66491
+asMultiple: FALSE
+asStatic: FALSE

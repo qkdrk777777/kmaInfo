@@ -1,8 +1,18 @@
 ---
-title: "Untitled"
-runtime: shiny
+title: "공공빅데이터 분석 공모전"
+author: "시각화 부문"
 output: html_document
+runtime: shiny
 ---
+  plot1은 2010~2018년 경찰 순직자 중 과로로 인한 순직자의 비율을 Pie Chart를 이용하여 시각화 한 것이고
+
+(Pie Chart에서 푸른색 영역에 해당하는 것이 과로사로 인한 순직 경찰의 비율이다.)
+
+법률, 경찰, 소방, 교도관련직에 대하여 plot2은 미충원인원, plot3는 부족인원을 시도별로 나타낸 꺽은선 그래프이다.
+
+**"plot1은 Explorer를 지원하지 않으므로 Crhome을 사용하여 열기 바란다."**
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -14,6 +24,8 @@ library(RColorBrewer)
 library(plotly)
 install_github('qkdrk777777/kmaInfo')
 library('kmaInfo')
+data('info')
+data('info2')
 ```
 
 
