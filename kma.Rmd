@@ -1,0 +1,51 @@
+---
+title: "Untitled"
+runtime: shiny
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plotGoogleMaps)
+library(shiny)
+library(devtools)
+library(shinydashboard)
+library(RColorBrewer)
+library(plotly)
+install_github('qkdrk777777/kmaInfo')
+library('kmaInfo')
+```
+
+
+```{r eruptions, echo=TRUE}
+ui = dashboardPage(
+  dashboardHeader(title=enc2utf8('목  차')),
+  dashboardSidebar(),
+  dashboardBody(
+    tabsetPanel(type = "tabs", 
+                tabPanel(enc2utf8("plot1. asos"), uiOutput("mymap1")), 
+                tabPanel(enc2utf8("plot2. aws"), uiOutput("mymap2"))
+    )
+  )
+)
+server = function(input, output){
+  output$mymap1 <- renderUI({
+    m3<-plotGoogleMaps(info,mapTypeId='roadmap',legend=F,openMap = F,filename = 'asos.html')
+    tags$iframe(
+      srcdoc = paste(readLines('asos.html'), collapse = '\n'),
+      width = "100%",
+      height = "700px"
+    )
+  })
+  output$mymap2 <- renderUI({
+    m4<-plotGoogleMaps(info2,mapTypeId='roadmap',legend=F,openMap = F,filename = 'aws.html')
+    tags$iframe(
+      srcdoc = paste(readLines('aws.html'), collapse = '\n'),
+      width = "100%",
+      height = "700px"
+    )
+  })
+}
+
+shinyApp(ui = ui, server = server,options=list(width='100%',height=1000))
+```
